@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\RedirectIfPaid;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +23,13 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-    Route::get('/subscribe', function () {
-        return view('subscribe');
-    })->name('subscribe');
+    Route::view('/subscribe', 'subscribe')
+        ->middleware(RedirectIfPaid::class)
+        ->name('subscribe');
+
+    Route::view('/members', 'members')
+        ->middleware('subscriptions.active')
+        ->name('members.index');
 });

@@ -33,10 +33,7 @@ class Subscribe extends Component
 
         $this->user->newSubscription('cashier', $this->priceId)->create($paymentMethod);
 
-        $this->notification()->success(
-            title: 'New Subscription',
-            description: 'You have successfully subscribed.'
-        );
+        $this->redirectRoute('members.index');
     }
 
     public function render()

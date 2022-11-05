@@ -19,6 +19,10 @@
                     <x-jet-nav-link href="{{ route('subscribe') }}" :active="request()->routeIs('subscribe')">
                         {{ __('Subscribe') }}
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('members.index') }}" :active="request()->routeIs('members.*')">
+                        {{ __('Members') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -161,6 +165,10 @@
 
             <x-jet-responsive-nav-link href="{{ route('subscribe') }}" :active="request()->routeIs('subscribe')">
                 {{ __('Subscribe') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('members.index') }}" :active="request()->routeIs('members.*')">
+                {{ __('Members') }}
             </x-jet-responsive-nav-link>
         </div>
 

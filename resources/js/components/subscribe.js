@@ -23,6 +23,7 @@ export default (intent, publishableKey, cardHolderName) => ({
         this.cardElement = card;
     },
     subscribe: async function () {
+        console.log(this.cardElement);
         const { setupIntent, error } = await this.stripe.confirmCardSetup(
             intent.client_secret,
             {
