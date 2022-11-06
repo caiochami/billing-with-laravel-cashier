@@ -32,4 +32,7 @@ Route::middleware([
     Route::view('/members', 'members')
         ->middleware('subscriptions.active')
         ->name('members.index');
+
+    Route::view('/charge', 'charge')
+        ->name('charge');
 });

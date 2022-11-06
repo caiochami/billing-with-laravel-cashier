@@ -8,8 +8,6 @@ use WireUi\Traits\Actions;
 
 class Subscribe extends Component
 {
-    use Actions;
-
     public User $user;
 
     public string $priceId = '';
