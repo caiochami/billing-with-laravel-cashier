@@ -33,6 +33,9 @@ Route::middleware([
         ->middleware('subscriptions.active')
         ->name('members.index');
 
+    Route::view('/invoices', 'invoices.index')
+        ->name('invoices.index');
+
     Route::view('/charge', 'charge')
         ->name('charge');
 });

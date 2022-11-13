@@ -27,6 +27,10 @@
                     <x-jet-nav-link href="{{ route('charge') }}" :active="request()->routeIs('charge')">
                         {{ __('Charge') }}
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('invoices.index') }}" :active="request()->routeIs('invoices.*')">
+                        {{ __('Invoices') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -177,6 +181,10 @@
 
             <x-jet-responsive-nav-link href="{{ route('charge') }}" :active="request()->routeIs('charge')">
                 {{ __('Charge') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('invoices.index') }}" :active="request()->routeIs('invoices.*')">
+                {{ __('Invoices') }}
             </x-jet-responsive-nav-link>
         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 class Charge extends Component
@@ -21,7 +22,15 @@ class Charge extends Component
     {
         $this->validate();
 
+        $this->user->createOrGetStripeCustomer();
+
+        $this->user->updateDefaultPaymentMethod($paymentMethodId);
+
         $this->user->charge($this->amount, $paymentMethodId);
+
+        $this->user->invoiceFor('Single Charge', $this->amount);
+
+        Cache::forget("users:{$this->user->id}:invoices");
 
         $this->redirectRoute('dashboard');
     }
