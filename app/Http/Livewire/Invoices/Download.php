@@ -14,7 +14,9 @@ class Download extends Component
 
     public function downloadInvoice(string $invoiceId): Response
     {
-        return $this->user->downloadInvoice($invoiceId);
+        return response()->streamDownload(function () use ($invoiceId) {
+            echo $this->user->downloadInvoice($invoiceId);
+        }, 'invoice.pdf');
     }
 
     public function render()
